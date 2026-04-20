@@ -14,7 +14,7 @@ st.header("Section 2: MarkDown")
 st.write("**Bold Text** and *Italic Text*")
 
 
-st.number_input()
+
 age = st.number_input("Enter your age:",
                       min_value=0,
                       max_value=120,
