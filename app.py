@@ -1,26 +1,30 @@
+
 import streamlit as st
 
-st.title("Welcome to Streamlit!")
+print("Program starts")
 
-st.header("Section 1: Introduction")
-st.write("Hello, Streamlit!")
-st.write(12345)
-st.write({"Name": "Alice", "Age": 30})
+# Title and Header
+st.title("Retail Business Dashboard")
+st.header("Manager Input Section")
 
-st.write(['list1', 
-          'list2'])
+# Instruction
+st.write("Please enter the monthly sales target and select the region.")
 
-st.header("Section 2: MarkDown")
-st.write("**Bold Text** and *Italic Text*")
+# Number input for sales target
+sales_target = st.number_input("Enter Monthly Sales Target (in USD):", min_value=0, value=50000)
 
+# Dropdown for region selection
+region = st.selectbox("Select Region:", ["North", "South", "East", "West"])
 
-
-age = st.number_input("Enter your age:",
-                      min_value=0,
-                      max_value=120,
-                      value=35)
-
-
-
-
-
+# Submit button
+if st.button("Submit"):
+    # Display entered values
+    st.write(f"Sales Target: ${sales_target}")
+    st.write(f"Region Selected: {region}")
+    
+    # Success message
+    st.success("Dashboard updated successfully!")
+    
+    # Extra message for ambitious target
+    if sales_target > 100000:
+        st.write("Great! You have set an ambitious target!")
