@@ -19,14 +19,14 @@ option = st.selectbox("Choose your favorite color:",
 st.write(f"You selected: {option}")
 
 
-if st.button("Click Me"):
-    st.write("Button clicked!")
-else:
-    st.write("Button NOT clicked!")
+if st.button("Finish?"):
+    st.success("Operation completed successfully!")
+# else:
+#     st.write("Button NOT clicked!")
   
-st.success("Operation completed successfully!")
-st.write("Operation completed successfully!")
-st.header("Operation completed successfully!")
+
+# st.write("Operation completed successfully!")
+# st.header("Operation completed successfully!")
 
 
 
