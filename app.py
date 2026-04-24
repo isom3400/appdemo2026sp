@@ -1,33 +1,22 @@
 
+
+
 import streamlit as st
 
+st.title("Streamlit Demo App")
+st.header("User Input Section")
 
-# Title and Header
-st.title("Hello")
-st.header("ISOM3400")
-
-st.write("**Bold Text** and *Italic Text*")
+st.write("Please provide your details below:")
 
 age = st.number_input("Enter your age:",
                       min_value=0,
                       max_value=120,
                       value=25)
-st.write(f"Your age is {age}")
+color = st.selectbox("Choose your favorite color:",
+                     ["Red", "Blue", "Green"])
 
-option = st.selectbox("Choose your favorite color:",
-                      ["Red", "Blue", "Green"])
-st.write(f"You selected: {option}")
-
-
-if st.button("Finish?"):
-    st.success("Operation completed successfully!")
-# else:
-#     st.write("Button NOT clicked!")
-  
-
-# st.write("Operation completed successfully!")
-# st.header("Operation completed successfully!")
-
+if st.button("Submit"):
+    st.success(f"Thank you! Age: {age}, Favorite Color: {color}")
 
 
 
