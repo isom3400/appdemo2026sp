@@ -1,60 +1,48 @@
 
 
+import math
 import streamlit as st
 
-# Title
-st.title("Basic Web Calculator")
-
-# Input fields
-num1 = st.number_input("Enter first number", value=0.0)
-num2 = st.number_input("Enter second number", value=0.0)
-
-# Operation selection
-operation = st.selectbox("Choose operation", ["Add", "Subtract", "Multiply", "Divide"])
-
-# Calculate
-if st.button("Calculate"):
-    if operation == "Add":
-        result = num1 + num2
-    elif operation == "Subtract":
-        result = num1 - num2
-    elif operation == "Multiply":
-        result = num1 * num2
-    elif operation == "Divide":
-        result = num1 / num2 if num2 != 0 else "Error: Division by zero"
-
-    st.success(f"Result: {result:,.3f}")
-                          #  1,904.000
-
-
-
-
-
-import math
-
 st.header("Scientific Functions")
-operation_sci = st.selectbox("Choose scientific operation", ["Square Root", "Power", "Sin", "Cos", "Tan"])
 
-value = st.number_input("Enter value", value=0.0)
-power = st.number_input("Enter power (if applicable)", value=2.0)
+# Use columns to make the layout more compact
+col1, col2 = st.columns(2)
 
-if st.button("Calculate Scientific"):
-    if operation_sci == "Square Root":
-        result = math.sqrt(value)
-    elif operation_sci == "Power":
-        result = math.pow(value, power)
-    elif operation_sci == "Sin":
-        result = math.sin(math.radians(value))
-    elif operation_sci == "Cos":
-        result = math.cos(math.radians(value))
-    elif operation_sci == "Tan":
-        result = math.tan(math.radians(value))
+with col1:
+    operation_sci = st.selectbox("Operation", 
+                                 ["Square Root", "Power", "Sin", "Cos", "Tan"])
+with col2:
+    value = st.number_input("Value", value=0.0)
 
-    st.success(f"Result: {result}")
+# Only show the power input if "Power" is selected
+power = None
+if operation_sci == "Power":
+    power = st.number_input("Enter exponent", value=2.0)
 
-
-
-
-
-
-
+if st.button("Calculate", type="primary"):
+    try:
+        if operation_sci == "Square Root":
+            if value < 0:
+                st.error("Cannot calculate square root of a negative number.")
+            else:
+                result = math.sqrt(value)
+        elif operation_sci == "Power":
+            result = math.pow(value, power)
+        elif operation_sci == "Sin":
+            result = math.sin(math.radians(value))
+        elif operation_sci == "Cos":
+            result = math.cos(math.radians(value))
+        elif operation_sci == "Tan":
+            # Check for tan(90) or tan(270) etc.
+            if (value - 90) % 180 == 0:
+                st.error("Undefined (Vertical Asymptote)")
+            else:
+                result = math.tan(math.radians(value))
+        
+        # Display result if no error occurred
+        if 'result' in locals():
+            st.metric(label="Result", value=f"{result:,.3f}")
+            
+    except Exception as e:
+        st.error(f"Error: {e}")
+        
