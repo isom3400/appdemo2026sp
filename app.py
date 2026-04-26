@@ -1,28 +1,28 @@
 
 
+
 import streamlit as st
-from streamlit_option_menu import option_menu
 
-st.title('Hello, Students!')
-st.write('This is your Python Programming course.')
+# Title
+st.title("Basic Web Calculator")
 
-with st.sidebar:
-    selected=option_menu(
-        menu_title = "Menu",
-        options = ["Home", "About", "Contact"],
-        icons = ["1-circle-fill",
-                 "2-circle-fill",
-                 "3-circle-fill"],
-        menu_icon= "emoji-smile-fill",
-        default_index=0,
-    )
+# Input fields
+num1 = st.number_input("Enter first number", value=0.0)
+num2 = st.number_input("Enter second number", value=0.0)
 
-if selected == "Home":
-    st.title(f"Welcome to the {selected} page.")
+# Operation selection
+operation = st.selectbox("Choose operation", ["Add", "Subtract", "Multiply", "Divide"])
 
-if selected == "About":
-    st.title(f"Welcome to the {selected} page.")
+# Calculate
+if st.button("Calculate"):
+    if operation == "Add":
+        result = num1 + num2
+    elif operation == "Subtract":
+        result = num1 - num2
+    elif operation == "Multiply":
+        result = num1 * num2
+    elif operation == "Divide":
+        result = num1 / num2 if num2 != 0 else "Error: Division by zero"
 
-if selected == "Contact":
-    st.title(f"Welcome to the {selected} page.")
-
+    st.success(f"Result: {result}")
+    
