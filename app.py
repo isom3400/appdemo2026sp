@@ -17,12 +17,12 @@ with st.sidebar:
         default_index = 0,
     )
     selected2 = option_menu(
-        menu_title = "Main Menu 📁",
-        options = ["Home", "About", "Contact"],
-        icons = ["house-fill",      # Home icon
+        menu_title2 = "Main Menu 📁",
+        options2 = ["Home", "About", "Contact"],
+        icons2 = ["house-fill",      # Home icon
                  "info-circle",     # Info icon
                  "envelope-at"],    # Mail icon
-        menu_icon = "cast",         # Sidebar/Cast icon
+        menu_icon2 = "cast",         # Sidebar/Cast icon
         default_index = 0,
     )
 
