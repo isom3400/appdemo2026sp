@@ -7,14 +7,14 @@ st.title('Hello, Students!')
 st.write('This is your Python Programming course.')
 
 with st.sidebar:
-    selected=option_menu(
-        menu_title = "Menu",
+    selected = option_menu(
+        menu_title = "Main Menu 📁",
         options = ["Home", "About", "Contact"],
-        icons = ["1-circle-fill",
-                 "2-circle-fill",
-                 "3-circle-fill"],
-        menu_icon= "emoji-smile-fill",
-        default_index=0,
+        icons = ["house-fill",      # Home icon
+                 "info-circle",     # Info icon
+                 "envelope-at"],    # Mail icon
+        menu_icon = "cast",         # Sidebar/Cast icon
+        default_index = 0,
     )
 
 if selected == "Home":
