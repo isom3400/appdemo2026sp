@@ -24,8 +24,17 @@ with col4:
     st.header("Q4 2024")
     st.write("Revenue: $1.6M")
 
+
+
+
+
+
+
 # Tabs Layout
-tab1, tab2, tab3 = st.tabs(["Sales Data", "Customer Insights", "Market Trends"])
+tab1, tab2, tab3, tab4 = st.tabs(["Sales Data", 
+                            "Customer Insights", 
+                            "Market Trends",
+                           "Market Performance",])
 with tab1:
     st.write("Content for Sales Data")
     sales_data = {
@@ -34,8 +43,13 @@ with tab1:
         "Q3 2024": "$1.3M",
         "Q4 2024": "$1.6M"
     }
+    for key in sales_data.keys():
+        st.write(f"{quarter}")
+    for val in sales_data.values():
+        st.write(f"{revenue}")
     for quarter, revenue in sales_data.items():
         st.write(f"{quarter}: {revenue}")
+        
 with tab2:
     st.write("Content for Customer Insights")
     customer_feedback = [
