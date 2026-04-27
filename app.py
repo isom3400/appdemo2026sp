@@ -1,8 +1,9 @@
-
+# import part
 
 import math
 import streamlit as st
 
+# main part
 st.header("Scientific Functions")
 
 operation_sci = st.selectbox(
@@ -13,10 +14,13 @@ operation_sci = st.selectbox(
 # Dynamically change the primary label based on the operation
 if operation_sci in ["Sin", "Cos", "Tan"]:
     value_label = "Enter angle in degrees"
-else:
+    value = st.number_input(value_label, value=0.0)
+elseif operation_sci in ["Square Root", "Power":
     value_label = "Enter base value"
+    value = st.number_input(value_label, value=0.0)
+else:
+    st.error("Invalid operation.)
 
-value = st.number_input(value_label, value=0.0)
 
 # Only show the second input if "Power" is selected
 result = None
