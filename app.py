@@ -74,8 +74,16 @@ with tab4:
 
 
 with st.expander("More Information"):
-    st.write("Additional details on data collection methods.")
-    st.write("Data was collected through surveys and sales reports.")
+    # st.write("Additional details on data collection methods.")
+    # st.write("Data was collected through surveys and sales reports.")
+
+
+    etab1, etab2 = st.tabs(["Sales Data", "Customer Insights"]) 
+    with etab1:
+        st.write("etab1")
+    with etab2:
+        st.write("etab2")
+    
 
 # Dynamic Containers
 placeholder = st.empty()
