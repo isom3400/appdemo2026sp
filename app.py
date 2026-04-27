@@ -7,22 +7,21 @@ st.title('Hello, Students!')
 st.write('This is your Python Programming course.')
 
 with st.sidebar:
+    # First Menu
     selected = option_menu(
         menu_title = "Main Menu 📁",
         options = ["Home", "About", "Contact"],
-        icons = ["house-fill",      # Home icon
-                 "info-circle",     # Info icon
-                 "envelope-at"],    # Mail icon
-        menu_icon = "cast",         # Sidebar/Cast icon
+        icons = ["house-fill", "info-circle", "envelope-at"],
+        menu_icon = "cast",
         default_index = 0,
     )
+    
+    # Second Menu (Fixed parameter names)
     selected2 = option_menu(
-        menu_title2 = "Main Menu 📁",
-        options2 = ["Home", "About", "Contact"],
-        icons2 = ["house-fill",      # Home icon
-                 "info-circle",     # Info icon
-                 "envelope-at"],    # Mail icon
-        menu_icon2 = "cast",         # Sidebar/Cast icon
+        menu_title = "Secondary Menu 🛠️", # Use 'menu_title', not 'menu_title2'
+        options = ["Settings", "Help", "Logout"], # Use 'options', not 'options2'
+        icons = ["gear", "question-circle", "door-open"], 
+        menu_icon = "tools",
         default_index = 0,
     )
 
