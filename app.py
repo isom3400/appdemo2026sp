@@ -19,7 +19,7 @@ elseif operation_sci in ["Square Root", "Power":
     value_label = "Enter base value"
     value = st.number_input(value_label, value=0.0)
 else:
-    st.error("Invalid operation.)
+    st.error("Invalid operation.")
 
 
 # Only show the second input if "Power" is selected
