@@ -44,9 +44,9 @@ with tab1:
         "Q4 2024": "$1.6M"
     }
     for key in sales_data.keys():
-        st.write(f"{quarter}")
+        st.write(f"{key}")
     for val in sales_data.values():
-        st.write(f"{revenue}")
+        st.write(f"{val}")
     for quarter, revenue in sales_data.items():
         st.write(f"{quarter}: {revenue}")
         
