@@ -1,11 +1,25 @@
 import streamlit as st
 import time
+import pandas as pd
 
 # -------------------------------
 # 1. Dashboard Title and Objective
 # -------------------------------
 st.title("Business Performance Dashboard")
-st.write("Objective: This dashboard provides insights into revenue, customer feedback, and market trends for better business decisions.")
+st.write(
+    "Objective: This dashboard provides insights into revenue, customer feedback, "
+    "and market trends for better business decisions."
+)
+
+# -------------------------------
+# Shared Data (FIXED SCOPE)
+# -------------------------------
+sales_data = {
+    "Q1 2024": 1.2,
+    "Q2 2024": 1.5,
+    "Q3 2024": 1.3,
+    "Q4 2024": 1.6,
+}
 
 # -------------------------------
 # 2. Columns Layout for Quarterly Revenue
@@ -30,15 +44,15 @@ tab1, tab2, tab3 = st.tabs(["Sales Data", "Customer Insights", "Market Trends"])
 
 with tab1:
     st.write("### Sales Data")
-    sales_data = {
-        "Q1 2024": "$1.2M",
-        "Q2 2024": "$1.5M",
-        "Q3 2024": "$1.3M",
-        "Q4 2024": "$1.6M"
-    }
+
     for quarter, revenue in sales_data.items():
-        st.write(f"{quarter}: {revenue}")
-    st.bar_chart({"Revenue (in M$)": [1.2, 1.5, 1.3, 1.6]}, height=200)
+        st.write(f"{quarter}: ${revenue}M")
+
+    df = pd.DataFrame(
+        {"Revenue (in M$)": list(sales_data.values())},
+        index=list(sales_data.keys())
+    )
+    st.bar_chart(df, height=200)
 
 with tab2:
     st.write("### Customer Insights")
@@ -64,22 +78,20 @@ with tab3:
 # 4. Expander for Additional Information
 # -------------------------------
 with st.expander("More Information"):
-    st.write("Data was collected through surveys, customer feedback forms, and official sales reports.")
-
+    st.write(
+        "Data was collected through surveys, customer feedback forms, "
+        "and official sales reports."
+    )
 
 # -------------------------------
 # 5. Dynamic Loading Simulation
 # -------------------------------
-
-# Create a placeholder
 placeholder = st.empty()
 
-# Simulate loading data with progress messages
-for i in range(6):  # 0%, 20%, 40%, 60%, 80%, 100%
+for i in range(6):
     placeholder.write(f"Loading data... {i * 20}% complete")
     time.sleep(1)
 
-# Replace placeholder with business insights after loading
 placeholder.write("Data loading complete. Displaying business insights.")
 
 business_insights = [
@@ -88,7 +100,6 @@ business_insights = [
     "Market trends show a growing demand for eco-friendly products."
 ]
 
-# Display insights one by one with delay
 for insight in business_insights:
     placeholder.write(insight)
     time.sleep(2)
@@ -97,16 +108,15 @@ for insight in business_insights:
 # 6. Add Interactivity
 # -------------------------------
 st.subheader("Interactive Revenue Checker")
-quarters = ["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"]
+quarters = list(sales_data.keys())
 selected_quarter = st.selectbox("Select a quarter:", quarters)
 
-# Display revenue dynamically
-st.write(f"Revenue for {selected_quarter}: {sales_data[selected_quarter]}")
+st.write(f"Revenue for {selected_quarter}: ${sales_data[selected_quarter]}M")
 
-# Bonus: Growth adjustment
 growth = st.slider("Adjust growth percentage:", 0, 50, 10)
-base_revenue = float(sales_data[selected_quarter].strip("$M"))
+base_revenue = sales_data[selected_quarter]
 adjusted_revenue = base_revenue * (1 + growth / 100)
+
 st.write(f"Adjusted Revenue for {selected_quarter}: ${adjusted_revenue:.2f}M")
 
 # -------------------------------
@@ -114,4 +124,3 @@ st.write(f"Adjusted Revenue for {selected_quarter}: ${adjusted_revenue:.2f}M")
 # -------------------------------
 if st.button("Show Motivation"):
     st.success("Keep pushing for growth! 🚀")
-    
