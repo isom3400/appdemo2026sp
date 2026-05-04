@@ -13,4 +13,15 @@ products = ['Product A', 'Product B', 'Product C', 'Product D', 'Product E']
 sales = np.random.rand(5) * 1000
 customers = np.random.randint(1, 100, size=5)
 
+df = pd.DataFrame({
+    'Product': products,
+    'Sales': sales,
+    'Customers': customers
+})
 
+
+# Step 5: Visualize Sales Data
+
+# Display DataFrame using st.dataframe
+st.markdown("### Product Sales and Customer Data")
+st.dataframe(df)  # Interactive table with sorting and resizing
