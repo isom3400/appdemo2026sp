@@ -31,3 +31,10 @@ st.dataframe(df)  # Interactive table with sorting and resizing
 st.markdown("### Sales Over Time")
 st.line_chart(sales_data)
 
+
+
+# Area Chart - Cumulative Sales
+st.markdown("### Cumulative Sales")
+st.area_chart(sales_data)
+
+
