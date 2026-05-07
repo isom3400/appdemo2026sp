@@ -1,40 +1,15 @@
-# Step 1: Install Streamlit (run in terminal: pip install streamlit)
-
-# Step 2: Import Necessary Libraries
 import streamlit as st
-import numpy as np
 import pandas as pd
+import os
 
-# Step 3: Generate Random Sales Data
-sales_data = np.random.rand(100) * 1000
+# Get the current working directory
+current_directory = os.getcwd()
+# Define the file path
+file_path = os.path.join(current_directory, 'winequality-red.csv')
 
-# Step 4: Create a DataFrame
-products = ['Product A', 'Product B', 'Product C', 'Product D', 'Product E']
-sales = np.random.rand(5) * 1000
-customers = np.random.randint(1, 100, size=5)
+# Read the CSV file into a DataFrame
+df = pd.read_csv(file_path, delimiter=';')
 
-df = pd.DataFrame({
-    'Product': products,
-    'Sales': sales,
-    'Customers': customers
-})
-
-
-# Step 5: Visualize Sales Data
-
-# Display DataFrame using st.dataframe
-st.markdown("### Product Sales and Customer Data")
-st.dataframe(df)  # Interactive table with sorting and resizing
-
-
-# Line Chart - Sales Over Time
-st.markdown("### Sales Over Time")
-st.line_chart(sales_data)
-
-
-
-# Area Chart - Cumulative Sales
-st.markdown("### Cumulative Sales")
-st.area_chart(sales_data)
-
-
+# Display the DataFrame in an interactive table
+st.write("Wine Quality Data")
+st.dataframe(df)
