@@ -12,4 +12,4 @@ st.dataframe(df)                # Interactive table
 
 st.data_editor(df)              # Editable table
 
-
+st.table(df)                    # Static table
