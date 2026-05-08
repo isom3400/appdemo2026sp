@@ -7,4 +7,6 @@ data = {'Product': ['A', 'B', 'C'],
         'Customers': [300, 400, 350]}
 df = pd.DataFrame(data)
 
+# Show data with Streamlit elements
+st.dataframe(df)                # Interactive table
 
