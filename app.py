@@ -10,3 +10,6 @@ df = pd.DataFrame(data)
 # Show data with Streamlit elements
 st.dataframe(df)                # Interactive table
 
+st.data_editor(df)              # Editable table
+
+
