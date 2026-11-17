@@ -43,6 +43,16 @@ filtered_data = data[data["Month"].isin(selected_months)]
 #st.write(type(filtered_data))
 
 
+# -------------------------------
+# Display Data Table
+# -------------------------------
+st.subheader("Filtered Data")
+st.dataframe(filtered_data)
+
+
+
+
+
 
 
 
