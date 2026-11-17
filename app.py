@@ -13,7 +13,7 @@ option = st.selectbox("Choose your favorite color:",
 
 if option == "Brown":
     st.write(f"You selected: {option}")
-elif option == "Red:
+elif option == "Red":
     st.header(f"You selected: {option}")
 
 
