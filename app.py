@@ -35,6 +35,7 @@ st.sidebar.header("Filters")
 selected_months = st.sidebar.multiselect("Select Months", months,
                                          default=months)
 
+show_expenses = st.sidebar.checkbox("Show Expenses", value=True)
 
 
 
