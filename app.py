@@ -78,6 +78,7 @@ col1.metric("Total Sales",
             f"HK${filtered_data['Sales'].sum():,.0f}")
 col2.metric("Total Expenses", 
             f"US${filtered_data['Expenses'].sum():,.0f}")
+col3.write("Empty")
 col4.metric("Profit", 
             f"${(filtered_data['Sales'].sum() - filtered_data['Expenses'].sum()):,.0f}")
 
