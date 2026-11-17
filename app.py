@@ -14,7 +14,8 @@ st.write({"Name": "Alice",
 
 st.write("**Bold Text** and *Italic Text*")
 
-
+st.markdown("This is <u>underlined text</u> in Streamlit.", 
+            unsafe_allow_html=True)
 
 
 
