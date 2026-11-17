@@ -23,3 +23,4 @@ df = pd.DataFrame({
 # Step 5: Visualize Sales Data
 
 st.title("Test")
+st.subheader("Class")
