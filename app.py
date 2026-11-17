@@ -14,8 +14,9 @@ option = st.selectbox("Choose your favorite color:",
 if option == "Brown":
     st.write(f"You selected: {option}")
 elif option == "Red":
-    st.header(f"You selected: {option}")
+    st.success("Operation completed successfully!")
 
-
+if st.button("Click Me"):
+    st.write("Button clicked!")
 
 
