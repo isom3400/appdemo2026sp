@@ -1,94 +1,16 @@
 
 import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-import numpy as np
-
-# -------------------------------
-# Title and Description
-# -------------------------------
-st.title("📊 Business Sales Dashboard")
-st.write("Analyze monthly sales data interactively!")
-
-
-# -------------------------------
-# Sample Data
-# -------------------------------
-months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-sales = np.random.randint(5000, 20000, size=12)
-expenses = np.random.randint(3000, 15000, size=12)
-
-data = pd.DataFrame({
-    "Month": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    "Sales": [4545, 6666, 77667, 45454, 454545, 3433,
-             3434,44,433,223,222,222],
-    "Expenses": np.random.randint(3000, 15000, size=12)
-})
-
-
-# -------------------------------
-# Sidebar Filters
-# -------------------------------
-st.sidebar.header("Filters")
-selected_months = st.sidebar.multiselect("Select Months", months,
-                                         default=months)
-
-show_expenses = st.sidebar.checkbox("Show Expenses", value=True)
-
-# Filter data
-filtered_data = data[data["Month"].isin(selected_months)]
-
-#st.write(type(filtered_data))
-
-
-# -------------------------------
-# Display Data Table
-# -------------------------------
-st.subheader("Filtered Data")
-st.dataframe(filtered_data)
-
-
-
-# -------------------------------
-# Interactive Chart
-# -------------------------------
-st.subheader("Sales Chart")
-fig, ax = plt.subplots()
-ax.plot(filtered_data["Month"], filtered_data["Sales"],
-        marker='o', label="Sales")
-if show_expenses:
-    ax.plot(filtered_data["Month"], filtered_data["Expenses"],
-            marker='o', label="Expenses")
-ax.set_title("Monthly Performance")
-ax.set_xlabel("Month")
-ax.set_ylabel("Amount ($)")
-ax.legend()
-st.pyplot(fig)
-
-
-
-# -------------------------------
-# KPI Metrics
-# -------------------------------
-st.subheader("Key Metrics")
-col1, col2, col3, col4 = st.columns(4)
-col1.metric("Total Sales", 
-            f"HK${filtered_data['Sales'].sum():,.0f}")
-col2.metric("Total Expenses", 
-            f"US${filtered_data['Expenses'].sum():,.0f}")
-col3.write("Empty")
-col4.metric("Profit", 
-            f"${(filtered_data['Sales'].sum() - filtered_data['Expenses'].sum()):,.0f}")
 
 
 
 
+st.title("Welcome to Streamlit!")
 
 
-
-
+st.write("Hello, Streamlit!")
+st.write(12345)
+st.write({"Name": "Alice", 
+          "Age": 30})
 
 
 
