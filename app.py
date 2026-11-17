@@ -73,10 +73,13 @@ st.pyplot(fig)
 # KPI Metrics
 # -------------------------------
 st.subheader("Key Metrics")
-col1, col2, col3 = st.columns(3)
-col1.metric("Total Sales", f"${filtered_data['Sales'].sum():,.0f}")
-col2.metric("Total Expenses", f"${filtered_data['Expenses'].sum():,.0f}")
-col3.metric("Profit", f"${(filtered_data['Sales'].sum() - filtered_data['Expenses'].sum()):,.0f}")
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("Total Sales", 
+            f"HK${filtered_data['Sales'].sum():,.0f}")
+col2.metric("Total Expenses", 
+            f"US${filtered_data['Expenses'].sum():,.0f}")
+col4.metric("Profit", 
+            f"${(filtered_data['Sales'].sum() - filtered_data['Expenses'].sum()):,.0f}")
 
 
 
