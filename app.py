@@ -32,6 +32,8 @@ data = pd.DataFrame({
 # Sidebar Filters
 # -------------------------------
 st.sidebar.header("Filters")
+selected_months = st.sidebar.multiselect("Select Months", months,
+                                         default=months)
 
 
 
