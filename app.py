@@ -1,64 +1,77 @@
 import streamlit as st
-import math
+import time
 
-# Calculation functions
-def add(a, b):
-    return a + b
+# Title
+st.title("Business Dashboard with Streamlit Layouts")
 
-def subtract(a, b):
-    return a - b
+# Objective
+st.write("Objective: To demonstrate the usage of columns, tabs, and dynamic containers in a business dashboard.")
 
-def multiply(a, b):
-    return a * b
+# Columns Layout
+col1, col2, col3 = st.columns(3)
+with col1:
+    st.header("Q1 2024")
+    st.write("Revenue: $1.2M")
+with col2:
+    st.header("Q2 2024")
+    st.write("Revenue: $1.5M")
+with col3:
+    st.header("Q3 2024")
+    st.write("Revenue: $1.3M")
 
-def divide(a, b):
-    return a / b if b != 0 else "Error: Division by zero"
+# Tabs Layout
+tab1, tab2, tab3 = st.tabs(["Sales Data", "Customer Insights", "Market Trends"])
+with tab1:
+    st.write("Content for Sales Data")
+    sales_data = {
+        "Q1 2024": "$1.2M",
+        "Q2 2024": "$1.5M",
+        "Q3 2024": "$1.3M",
+        "Q4 2024": "$1.6M"
+    }
+    for quarter, revenue in sales_data.items():
+        st.write(f"{quarter}: {revenue}")
+with tab2:
+    st.write("Content for Customer Insights")
+    customer_feedback = [
+        "Great service!",
+        "Very satisfied with the product quality.",
+        "Quick delivery and excellent support."
+    ]
+    for feedback in customer_feedback:
+        st.write(f"- {feedback}")
+with tab3:
+    st.write("Content for Market Trends")
+    market_trends = {
+        "Eco-friendly products": "Increasing demand",
+        "Online shopping": "Continued growth",
+        "Subscription services": "Rising popularity"
+    }
+    for trend, status in market_trends.items():
+        st.write(f"{trend}: {status}")
 
-def sine(a):
-    return math.sin(a)
+with st.expander("More Information"):
+    st.write("Additional details on data collection methods.")
+    st.write("Data was collected through surveys and sales reports.")
 
-def log_base10(a):
-    return math.log10(a) if a > 0 else "Error: Input must be greater than 0"
+# Dynamic Containers
+placeholder = st.empty()
 
-def natural_log(a):
-    return math.log(a) if a > 0 else "Error: Input must be greater than 0"
+# Simulate loading data and updating the placeholder
+for i in range(5):
+    placeholder.write(f"Loading data... {i*20}% complete")
+    time.sleep(1)
 
-# Main application
-def main():
-    # Title
-    st.title("Basic Web Calculator")
+# Once loading is complete, display the final message
+placeholder.write("Data loading complete. Displaying business insights.")
 
-    # Input fields
-    num1 = st.number_input("Enter first number", value=0.0)
-    num2 = st.number_input("Enter second number", value=0.0)
-
-    # Operation selection
-    operation = st.selectbox(
-        "Choose operation",
-        ["Add", "Subtract", "Multiply", "Divide", "Sin()", "Log()", "Ln()"]
-    )
-
-    # Calculate
-    if st.button("Calculate"):
-        if operation == "Add":
-            result = add(num1, num2)
-        elif operation == "Subtract":
-            result = subtract(num1, num2)
-        elif operation == "Multiply":
-            result = multiply(num1, num2)
-        elif operation == "Divide":
-            result = divide(num1, num2)
-        elif operation == "Sin()":
-            result = sine(num1)
-        elif operation == "Log()":
-            result = log_base10(num1)
-        elif operation == "Ln()":
-            result = natural_log(num1)
-        else:
-            result = "Invalid operation"
-
-        st.subheader(f"Result: {result}")
-
-if __name__ == "__main__":
-    main()
-  
+# Display dynamic business insights
+business_insights = [
+    "Revenue increased by 15% in Q1 2024.",
+    "Customer satisfaction improved by 10%.",
+    "Market trends show a growing demand for eco-friendly products."
+]
+for insight in business_insights:
+    placeholder.write(insight)
+    time.sleep(2)
+    
