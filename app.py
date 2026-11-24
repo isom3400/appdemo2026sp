@@ -9,7 +9,11 @@ num1 = st.number_input("Enter first number", value=0.0)
 num2 = st.number_input("Enter second number", value=0.0)
 
 # Operation selection
-operation = st.selectbox("Choose operation", ["Add", "Subtract", "Multiply", "Divide", "Sin()"])
+operation = st.selectbox("Choose operation", ["Add", 
+                                              "Subtract", 
+                                              "Multiply", 
+                                              "Divide", 
+                                              "Sin()"])
 
 # Calculate
 if st.button("Calculate"):
